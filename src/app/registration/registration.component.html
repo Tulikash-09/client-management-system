@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration</title>
+</head>
+<body>
+    <div class="main" >
+        <h1> <b> Create a Client </b> </h1>
+        <h2> Please fill in this form to create a client. </h2>
+        <hr>
+        <form [formGroup]="registrationForm" (ngSubmit)="register()"> 
+            <div class="display">
+                <b>Name</b><br>
+                <input type="text" formControlName="name" placeholder="Enter  Name">
+                <div *ngIf="registrationForm?.get('name')?.invalid && registrationForm?.get('name')?.touched">
+                    <small style="color: red;"> Name is required. </small>
+                </div>
+            </div>
+            <div class="display">
+                <b>Email</b><br>
+                <input type="email" formControlName="email" placeholder="Enter Email">
+                <div *ngIf="registrationForm?.get('email')?.invalid && registrationForm?.get('email')?.touched">
+                    <small style="color: red;"> Please enter a valid email. </small>
+                </div> 
+            </div>
+            <div class="display">        
+                <b>Address</b><br>
+                <textarea rows="1" cols="16" formControlName="address" placeholder="Enter Address"></textarea>   
+            </div>
+            <div class="display">      
+                <b>Password</b><br>
+                <input type="password" formControlName="password" placeholder="Enter Password">
+                <div *ngIf="registrationForm?.get('password')?.invalid && registrationForm?.get('password')?.touched">
+                    <small style="color: red;"> Password must be 8 characters long and include an uppercase letter, a number, and a special character (&#64;, *, or $). </small>
+                </div>            
+            </div>
+            <b>Repeat Password</b><br>
+            <input type="password" formControlName="confirmPassword" placeholder="Repeat Password">
+            <div *ngIf="registrationForm?.errors?.['notMatching'] && (registrationForm?.get('password')?.touched || registrationForm?.get('confirmPassword')?.touched)">
+                <small style="color: red;"> Passwords do not match. </small>
+            </div>
+            <br>
+            <br>
+            <button type="submit" [disabled]="registrationForm.invalid"> Register </button> 
+        </form>
+        <hr>
+       
+
+        <h1 style="color: rgb(6, 175, 6);"> {{message}} </h1>
+    </div>
+</body>
+</html>

@@ -1,0 +1,24 @@
+body {
+    background-image: url("/client-management/src/assets/backdrop.jpg");
+    background-size: cover; 
+    background-repeat: no-repeat; 
+    height: 100vh;
+    display: flex; 
+    justify-content: center; 
+}
+ 
+.main{
+    text-align: left;
+    margin-right: auto;
+    padding: 12px;
+    border-radius: 12px;
+    background: linear-gradient(120deg, #ffffff, #ffffff 100%);
+
+}
+hr{
+    margin: 20px 0;
+    width: 450px;
+}
+.display{
+    padding-bottom: 12px;
+}

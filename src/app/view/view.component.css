@@ -1,0 +1,16 @@
+.main{
+    text-align: left;
+    margin-right: auto;
+    padding: 12px;
+    border-radius: 12px;
+    background: linear-gradient(120deg, #ffffff, #ffffff 100%);
+
+}
+hr{
+    margin: 20px 0;
+    width: 450px;
+}
+.display{
+    padding-bottom: 12px;
+}
+

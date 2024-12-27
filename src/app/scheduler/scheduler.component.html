@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scheduler</title>
+</head>
+<body>
+    <div class="main">
+        <h1> <b> Create a Meeting Schedule </b> </h1>
+        <hr>
+            <form [formGroup]="schedulerForm" (ngSubmit)="submit()">
+                <div class="display">
+                    <b>Meeting Topic</b><br>
+                    <input type="text" formControlName="topic" placeholder="Enter Meeting Topic" style="min-width: 150px;">
+                    <div *ngIf="schedulerForm?.get('topic')?.invalid && schedulerForm?.get('name')?.touched">
+                        <small style="color: red;"> Meeting Topic is required. </small>
+                    </div>  
+                </div>
+                <div class="display">
+                    <b>Number of People</b><br>
+                    <input type="number" formControlName="nPeople" placeholder="Enter Number of People" style="min-width: 150px;">
+                    <div *ngIf="schedulerForm?.get('nPeople')?.invalid && schedulerForm?.get('nPeople')?.touched">
+                        <small style="color: red;"> Number of People is required. </small>
+                    </div>
+                </div>
+                <b>Start Time </b><br>
+                <input type="datetime-local" formControlName="time">
+                <div *ngIf="schedulerForm?.get('time')?.invalid && schedulerForm?.get('time')?.touched">
+                    <small style="color: red;"> Meeting Date and Time is required. </small>
+                </div>
+                <br>
+                <br>
+                <button type="submit" [disabled]="schedulerForm.invalid"> Schedule </button>
+            </form>
+        <hr>
+
+        <h1 style="color: rgb(6, 175, 6);"> {{message}} </h1>
+    </div>
+
+</body>
+</html>

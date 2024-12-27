@@ -1,1 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
+body {
+    background-image: url("/client-management/src/assets/backdrop.jpg");
+    background-size: cover; 
+    background-repeat: no-repeat; 
+    height: 100vh;
+    display: flex; 
+    justify-content: center; 
+}

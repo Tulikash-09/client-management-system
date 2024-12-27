@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+<body>
+    <div class="main">
+        <h1> <b> Client Login </b> </h1>
+        <h2> Please fill in this form to log in.</h2>
+        <hr>
+            <form name="login">
+                <div class="display">
+                    <b>Email</b><br>
+                    <input type="email" name="email" placeholder="Enter Email" [(ngModel)]="email"> <br>  
+                </div>
+                <b>Password</b><br>
+                <input type="password" name="pwd" placeholder="Enter Password" [(ngModel)]="password"><br>
+            </form>
+        <hr>
+        <input type="button" name="submit" value="Login" (click)="onLogin(email,password)">
+
+        <h1 style="color: rgb(6, 175, 6);"> {{message}} </h1>
+    </div>
+
+</body>
+</html>
