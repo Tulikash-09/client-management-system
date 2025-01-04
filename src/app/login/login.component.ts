@@ -25,6 +25,9 @@ export class LoginComponent implements OnInit{
         this.password = userData.password;
         this.authService.clearUserData();
       }
+      else if(this.email && this.password){
+        this.onLogin(this.email, this.password);
+      }
       else{
         console.error('No user data found');
       }
@@ -47,4 +50,5 @@ export class LoginComponent implements OnInit{
       }
     );
   }
+
 }
