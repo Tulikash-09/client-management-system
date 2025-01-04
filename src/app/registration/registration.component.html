@@ -3,6 +3,7 @@
 <head> 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <title>Registration</title>
 </head>
 <body>
@@ -10,7 +11,7 @@
         <h1> <b> Create a Client </b> </h1>
         <h2> Please fill in this form to create a client. </h2>
         <hr>
-        <form [formGroup]="registrationForm" (ngSubmit)="register()"> 
+        <form [formGroup]="registrationForm" (ngSubmit)="register()" class="form-group"> 
             <div class="display">
                 <b>Name</b><br>
                 <input type="text" formControlName="name" placeholder="Enter  Name">
@@ -43,7 +44,7 @@
             </div>
             <br>
             <br>
-            <button type="submit" [disabled]="registrationForm.invalid"> Register </button> 
+            <button class="btn btn-primary" type="submit" [disabled]="registrationForm.invalid"> Register </button> 
         </form>
         <hr>
        
