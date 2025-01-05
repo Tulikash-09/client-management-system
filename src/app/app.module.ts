@@ -11,6 +11,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { ViewComponent } from './view/view.component';
+import { MeetingDetailsComponent } from './view/meeting-details/meeting-details.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { ViewComponent } from './view/view.component';
     RegistrationComponent,
     SchedulerComponent,
     WelcomeComponent,
-    ViewComponent
+    ViewComponent,
+    MeetingDetailsComponent
   ],
   imports: [
     BrowserModule,

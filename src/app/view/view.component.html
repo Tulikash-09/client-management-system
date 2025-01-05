@@ -7,7 +7,7 @@
     <title>View</title>
 </head>
 <body>
-    <div class="main">
+    <div class="main" *ngIf="!selectedMeeting">
         <h1> <b> Meeting Schedule </b> </h1>
         <br>
         <!-- <hr> -->
@@ -15,20 +15,24 @@
             <thead>
                 <tr>
                     <th scope="col">Id</th>
-                    <th scope="col">Topic</th>
-                    <th scope="col">#People</th>
+                    <!-- <th scope="col">Topic</th> -->
+                    <!-- <th scope="col">#People</th> -->
                     <th scope="col">Date & Time</th>
+                    <th scope="col">Details</th>
                 </tr>
             </thead>
             <tbody>
                 <tr *ngFor="let info of meetingInfo">
                     <td scope="row">{{info.id}}</td> 
-                    <td>{{info.topic}}</td> 
-                    <td>{{info.npeople}}</td> 
+                    <!-- <td>{{info.topic}}</td>  -->
+                    <!-- <td>{{info.npeople}}</td>  -->
                     <td>{{info.time | date: 'medium'}} </td> 
+                    <td><button class="btn btn-secondary" (click)="viewMeetingDetails(info)">Details</button></td>
                 </tr>
             </tbody>
         </table>
     </div>
+
+    <app-meeting-details *ngIf="selectedMeeting" [meeting]="selectedMeeting" (close)="clearSelection()"></app-meeting-details>
 </body>
 </html>

@@ -11,7 +11,10 @@ import { Component, OnInit } from '@angular/core';
 export class ViewComponent implements OnInit{
 
   meetingInfo:any[] = [];
+  selectedMeeting:any = null;
+
   constructor(private http:HttpClient){}
+
   ngOnInit(): void {
       this.fetchDetails();
   }
@@ -28,5 +31,13 @@ export class ViewComponent implements OnInit{
       console.error('Error in loading the details',error);
     }
     );
+  }
+
+  viewMeetingDetails(meeting:any){
+    this.selectedMeeting = meeting;
+  }
+
+  clearSelection(){
+    this.selectedMeeting = null;
   }
 }
