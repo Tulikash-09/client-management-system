@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'app-meeting-details',
@@ -7,16 +7,18 @@ import { Component, EventEmitter, Input, Output, SimpleChanges } from '@angular/
   templateUrl: './meeting-details.component.html',
   styleUrl: './meeting-details.component.css'
 })
-export class MeetingDetailsComponent {
+export class MeetingDetailsComponent implements OnChanges {
+  
+  ngOnChanges(changes: SimpleChanges): void {
+    if(changes['meeting']){
+      const updatedMeeting = {...changes['meeting'].currentValue};
+      updatedMeeting.topic = updatedMeeting.topic.toUpperCase();
+      this.meeting = updatedMeeting;
+    }
+  }
 
   @Input() meeting:any = null;
   @Output() close = new EventEmitter<void>();
-
-  // ngOnchanges(changes: SimpleChanges){
-  //   if(changes['meeting']){
-  //     console.log('Selected meeting updated', changes['meeting'].currentValue);
-  //   }
-  // }
 
   closeDetails(){
     this.close.emit();
