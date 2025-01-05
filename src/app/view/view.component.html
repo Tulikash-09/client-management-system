@@ -7,32 +7,61 @@
     <title>View</title>
 </head>
 <body>
-    <div class="main" *ngIf="!selectedMeeting">
+    <div class="main" >
         <h1> <b> Meeting Schedule </b> </h1>
         <br>
+        <div *ngIf="loading; else loadedTemplate" >
+            <div class="text-center">
+                <h3>Loading Meetings...</h3>
+                <div class="spinner-border" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
+            </div>
+        </div>
+        <ng-template #loadedTemplate >
+            <div class="filter-section" *ngIf="meetingInfo.length > 0; else noMeetingsTemplate">
+                <label for="filter">Filter by Topic:</label>
+                <input #filterInput type="text" id="filter" class="form-control" (input)="filterMeetings(filterInput.value)"
+                placeholder="Type topic to filter">
+            </div>
+        </ng-template>
         <!-- <hr> -->
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th scope="col">Id</th>
-                    <!-- <th scope="col">Topic</th> -->
-                    <!-- <th scope="col">#People</th> -->
-                    <th scope="col">Date & Time</th>
-                    <th scope="col">Details</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let info of meetingInfo">
-                    <td scope="row">{{info.id}}</td> 
-                    <!-- <td>{{info.topic}}</td>  -->
-                    <!-- <td>{{info.npeople}}</td>  -->
-                    <td>{{info.time | date: 'medium'}} </td> 
-                    <td><button class="btn btn-secondary" (click)="viewMeetingDetails(info)">Details</button></td>
-                </tr>
-            </tbody>
-        </table>
+         <div class="row"  *ngIf="filteredMeetings.length > 0;">
+            <div class="col-md-10">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">Id</th>
+                            <th scope="col">Topic</th>
+                            <!-- <th scope="col">#People</th> -->
+                            <!-- <th scope="col">Date & Time</th> -->
+                            <th scope="col">Details</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr #meetingRow *ngFor="let info of filteredMeetings"
+                        [class.highlight]="info === selectedMeeting"
+                        (click)="viewMeetingDetails(info)">
+                            <td scope="row">{{info.id}}</td> 
+                            <td>{{info.topic}}</td> 
+                            <!-- <td>{{info.npeople}}</td>  -->
+                            <!-- <td>{{info.time | date: 'medium'}} </td>  -->
+                            <td><button class="btn btn-secondary" (click)="viewMeetingDetails(info)">Details</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-md-2">
+                <app-meeting-details *ngIf="selectedMeeting" [meeting]="selectedMeeting" (close)="clearSelection()"></app-meeting-details>
+            </div>
+        </div>
+        <ng-template #noMeetingsTemplate>
+            <div class="text-center">
+                <h3>No meetings scheduled yet.</h3>
+            </div>
+        </ng-template>
     </div>
 
-    <app-meeting-details *ngIf="selectedMeeting" [meeting]="selectedMeeting" (close)="clearSelection()"></app-meeting-details>
+    
 </body>
 </html>
