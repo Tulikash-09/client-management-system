@@ -71,7 +71,7 @@ export class ViewComponent implements OnInit, AfterViewInit{
         meeting.topic.toLowerCase().includes(topic.toLowerCase())
     );
     if(this.filterMeetings.length > 0){
-      this.selectedMeeting = this.filteredMeetings[0];
+      this.viewMeetingDetails(this.filteredMeetings[0]);
     }else{
       this.selectedMeeting = null;
     }

@@ -12,6 +12,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { ViewComponent } from './view/view.component';
 import { MeetingDetailsComponent } from './view/meeting-details/meeting-details.component';
+import { CustomTimePipe } from './custom-time.pipe';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,8 @@ import { MeetingDetailsComponent } from './view/meeting-details/meeting-details.
     SchedulerComponent,
     WelcomeComponent,
     ViewComponent,
-    MeetingDetailsComponent
+    MeetingDetailsComponent,
+    CustomTimePipe
   ],
   imports: [
     BrowserModule,
@@ -30,7 +33,7 @@ import { MeetingDetailsComponent } from './view/meeting-details/meeting-details.
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

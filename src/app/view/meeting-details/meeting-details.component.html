@@ -12,7 +12,7 @@
         <p><b>Id:</b> {{ meeting.id }}</p>
         <p><b>Topic:</b> {{ meeting.topic }}</p>
         <p><b># People:</b> {{ meeting.npeople }}</p>
-        <p><b>Time:</b> {{ meeting.time | date: 'medium' }}</p>
+        <p><b>Time:</b> {{ meeting.time | customTime }}</p>
         <button class="btn btn-secondary" (click)="closeDetails()">Close</button>
       </div>
 </body>
